@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+@layer components {
+  .container-lg {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .section-padding {
+    @apply py-24 lg:py-32;
+  }
+
+  .heading-xl {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1];
+  }
+
+  .heading-lg {
+    @apply text-3xl sm:text-4xl font-semibold tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-xl sm:text-2xl font-semibold tracking-tight;
+  }
+
+  .text-muted {
+    @apply text-zinc-400;
+  }
+
+  .text-subtle {
+    @apply text-zinc-500;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn px-6 py-3 bg-white text-zinc-900 rounded-lg hover:bg-zinc-100;
+  }
+
+  .btn-secondary {
+    @apply btn px-6 py-3 bg-zinc-800 text-white rounded-lg hover:bg-zinc-700 border border-zinc-700;
+  }
+
+  .btn-ghost {
+    @apply btn px-4 py-2 text-zinc-300 hover:text-white hover:bg-zinc-800 rounded-lg;
+  }
+
+  .card {
+    @apply bg-zinc-900/60 border border-zinc-800 rounded-2xl;
+  }
+
+  .card-hover {
+    @apply card hover:border-zinc-700 hover:bg-zinc-900/80 transition-all duration-300;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full;
+  }
+
+  .badge-primary {
+    @apply badge bg-indigo-500/10 text-indigo-400 border border-indigo-500/20;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-500/10 text-amber-400 border border-amber-500/20;
+  }
+
+  .glow {
+    @apply absolute rounded-full blur-3xl opacity-20;
+  }
+
+  .gradient-border {
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+                linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4)) border-box;
+    border: 1px solid transparent;
+  }
+}
