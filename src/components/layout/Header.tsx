@@ -44,14 +44,14 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            <Link href="/products" className="btn-ghost text-sm">
-              Products
+            <Link href="/ai-receptionist" className="btn-ghost text-sm">
+              AI Receptionist
             </Link>
-            <Link href="/services" className="btn-ghost text-sm">
-              Services
+            <Link href="/ai-messaging" className="btn-ghost text-sm">
+              AI Messaging
             </Link>
             <Link href="/work" className="btn-ghost text-sm">
-              Work
+              Case Studies
             </Link>
             <Link href="/about" className="btn-ghost text-sm">
               About
@@ -85,25 +85,25 @@ export default function Header() {
       >
         <nav className="container-lg py-8 flex flex-col gap-2">
           <Link
-            href="/products"
+            href="/ai-receptionist"
             className="py-3 text-lg font-medium hover:text-zinc-300 transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Products
+            AI Receptionist
           </Link>
           <Link
-            href="/services"
+            href="/ai-messaging"
             className="py-3 text-lg font-medium hover:text-zinc-300 transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Services
+            AI Messaging
           </Link>
           <Link
             href="/work"
             className="py-3 text-lg font-medium hover:text-zinc-300 transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Work
+            Case Studies
           </Link>
           <Link
             href="/about"

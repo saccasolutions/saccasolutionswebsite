@@ -5,7 +5,11 @@
       "Bash(npm run build:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git branch:*)"
+      "Bash(git branch:*)",
+      "WebFetch(domain:saccasolutions.com)",
+      "Bash(find:*)",
+      "Bash(npx next:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []

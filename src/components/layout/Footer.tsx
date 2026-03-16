@@ -11,27 +11,22 @@ export default function Footer() {
               Sacca Solutions
             </Link>
             <p className="text-sm text-zinc-500 mt-3 max-w-xs">
-              AI products and automation systems that replace manual work.
+              Conversational AI that turns every call and message into a qualified lead.
             </p>
           </div>
 
-          {/* Products */}
+          {/* Solutions */}
           <div>
-            <h4 className="text-sm font-medium mb-4">Products</h4>
+            <h4 className="text-sm font-medium mb-4">Solutions</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/products/betterdatingai" className="text-zinc-400 hover:text-white transition-colors">
-                  BetterDatingAI
+                <Link href="/ai-receptionist" className="text-zinc-400 hover:text-white transition-colors">
+                  AI Receptionist
                 </Link>
               </li>
               <li>
-                <Link href="/products/dreamfluent" className="text-zinc-400 hover:text-white transition-colors">
-                  DreamFluent
-                </Link>
-              </li>
-              <li>
-                <Link href="/products/photohut" className="text-zinc-400 hover:text-white transition-colors">
-                  PhotoHut
+                <Link href="/ai-messaging" className="text-zinc-400 hover:text-white transition-colors">
+                  AI Messaging
                 </Link>
               </li>
             </ul>
@@ -42,18 +37,13 @@ export default function Footer() {
             <h4 className="text-sm font-medium mb-4">Company</h4>
             <ul className="space-y-3 text-sm">
               <li>
+                <Link href="/work" className="text-zinc-400 hover:text-white transition-colors">
+                  Case Studies
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-zinc-400 hover:text-white transition-colors">
                   About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-zinc-400 hover:text-white transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="text-zinc-400 hover:text-white transition-colors">
-                  Work
                 </Link>
               </li>
               <li>

@@ -83,23 +83,23 @@ export default function AboutPage() {
               <ul className="grid md:grid-cols-2 gap-4 text-zinc-300">
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-3 mt-1">▸</span>
-                  <span>Build AI applications from scratch to production</span>
+                  <span>Build conversational voice AI that answers calls 24/7</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-3 mt-1">▸</span>
-                  <span>Design automation systems that actually replace work</span>
+                  <span>Design AI messaging agents for SMS, webchat, and social</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-3 mt-1">▸</span>
-                  <span>Architect databases and backends that scale</span>
+                  <span>Create lead generation automation that converts around the clock</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-3 mt-1">▸</span>
-                  <span>Train custom AI models when needed</span>
+                  <span>Set up CRM integrations and automated follow-up workflows</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-3 mt-1">▸</span>
-                  <span>Ship mobile apps with React Native and Expo</span>
+                  <span>Build appointment booking and lead qualification systems</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-3 mt-1">▸</span>

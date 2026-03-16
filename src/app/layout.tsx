@@ -10,16 +10,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sacca Solutions | AI Products & Automation Systems",
-  description: "Sacca Solutions builds intelligent AI products and automation systems that replace manual work, empower users, and scale businesses.",
-  keywords: ["AI", "automation", "AI products", "conversational AI", "React Native"],
+  title: "Sacca Solutions | Conversational AI for Lead Generation",
+  description: "Sacca Solutions builds conversational AI systems—voice AI receptionists and messaging agents—that capture, engage, and convert leads 24/7 for service businesses.",
+  keywords: ["conversational AI", "AI receptionist", "AI messaging", "lead generation", "voice AI", "automation"],
   icons: {
     icon: "/favicon.png",
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Sacca Solutions | AI Products & Automation Systems",
-    description: "Intelligent AI products and automation systems that replace manual work and scale businesses.",
+    title: "Sacca Solutions | Conversational AI for Lead Generation",
+    description: "AI voice receptionists and messaging agents that capture and convert leads 24/7 for service businesses.",
     type: "website",
   },
 };
