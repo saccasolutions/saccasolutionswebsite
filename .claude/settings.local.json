@@ -9,7 +9,10 @@
       "WebFetch(domain:saccasolutions.com)",
       "Bash(find:*)",
       "Bash(npx next:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:widgets.leadconnectorhq.com)",
+      "WebSearch",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
