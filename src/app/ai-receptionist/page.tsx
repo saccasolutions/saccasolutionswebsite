@@ -21,9 +21,9 @@ export default function AIReceptionistPage() {
               Every missed call is a lost customer. Every voicemail is a lead that&apos;s already moving on. Your AI receptionist answers instantly, qualifies the lead, and books the appointment&mdash;so you don&apos;t have to.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+12155095121" className="btn-primary text-lg px-8 py-4">
-                Call Now to Try It: (215) 509-5121
-              </a>
+              <ChatTrigger mode="voice" className="btn-primary text-lg px-8 py-4">
+                Try Our AI Receptionist Now
+              </ChatTrigger>
               <Link href="/contact" className="btn-secondary text-lg px-8 py-4">
                 Book a Demo
               </Link>
@@ -242,21 +242,11 @@ export default function AIReceptionistPage() {
               <p className="text-xl text-muted mb-8 max-w-2xl mx-auto">
                 Don&apos;t take our word for it. Pick up your phone and call. This is the same AI that will work for your business, 24/7.
               </p>
-              <a
-                href="tel:+12155095121"
-                className="inline-flex items-center gap-3 text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 text-transparent bg-clip-text hover:from-cyan-300 hover:to-indigo-300 transition-all duration-300"
-              >
+              <ChatTrigger mode="voice" className="inline-flex items-center gap-3 text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 text-transparent bg-clip-text hover:from-cyan-300 hover:to-indigo-300 transition-all duration-300 cursor-pointer">
                 <svg className="w-10 h-10 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                (215) 509-5121
-              </a>
-              <p className="text-muted mt-6 mb-4">or try it right from your browser</p>
-              <ChatTrigger mode="voice" className="btn-primary inline-flex items-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                 </svg>
-                Chat with Voice in Browser
+                Talk to Our AI Now
               </ChatTrigger>
             </div>
           </div>
@@ -348,9 +338,9 @@ export default function AIReceptionistPage() {
                 Your competitors are answering calls you&apos;re not. Every hour you wait is another customer you lose. Let&apos;s fix that today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+12155095121" className="btn-primary text-lg px-8 py-4">
-                  Call (215) 509-5121
-                </a>
+                <ChatTrigger mode="voice" className="btn-primary text-lg px-8 py-4">
+                  Try Our AI Receptionist
+                </ChatTrigger>
                 <Link href="/contact" className="btn-secondary text-lg px-8 py-4">
                   Book a Demo
                 </Link>

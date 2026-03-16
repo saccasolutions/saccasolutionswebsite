@@ -28,12 +28,12 @@ export default function Home() {
               calls. No more cold leads. No more money left on the table.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+12155095121" className="btn-primary text-base px-8 py-4">
+              <ChatTrigger mode="voice" className="btn-primary text-base px-8 py-4 inline-flex items-center">
                 <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 Try Our AI Receptionist
-              </a>
+              </ChatTrigger>
               <Link href="#how-it-works" className="btn-secondary text-base px-8 py-4">
                 See How It Works
               </Link>
@@ -180,12 +180,12 @@ export default function Home() {
                   <Link href="/ai-receptionist" className="btn-primary">
                     Learn More
                   </Link>
-                  <a href="tel:+12155095121" className="btn-secondary">
+                  <ChatTrigger mode="voice" className="btn-secondary inline-flex items-center">
                     <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    Try it: (215) 509-5121
-                  </a>
+                    Try Our AI Voice
+                  </ChatTrigger>
                 </div>
               </div>
             </div>
@@ -401,12 +401,12 @@ export default function Home() {
               Every missed call is a missed customer. Let our AI answer for you—starting now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+12155095121" className="btn-primary text-base px-8 py-4">
+              <ChatTrigger mode="voice" className="btn-primary text-base px-8 py-4 inline-flex items-center">
                 <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call Our AI: (215) 509-5121
-              </a>
+                Talk to Our AI Now
+              </ChatTrigger>
               <Link href="/contact" className="btn-secondary text-base px-8 py-4">
                 Book a Demo
               </Link>

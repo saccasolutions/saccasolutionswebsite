@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChatTrigger from '@/components/ui/ChatTrigger';
 
 export default function ServicesPage() {
   return (
@@ -23,9 +24,9 @@ export default function ServicesPage() {
               <Link href="/contact" className="btn-primary">
                 Book a Free Strategy Call
               </Link>
-              <a href="tel:+12155095121" className="btn-secondary">
-                Call (215) 509-5121
-              </a>
+              <ChatTrigger mode="voice" className="btn-secondary">
+                Try Our AI Now
+              </ChatTrigger>
             </div>
           </div>
         </div>
@@ -362,9 +363,9 @@ export default function ServicesPage() {
                 <Link href="/contact" className="btn-primary text-lg px-8 py-4">
                   Book Your Free Strategy Call
                 </Link>
-                <a href="tel:+12155095121" className="btn-secondary text-lg px-8 py-4">
-                  Call (215) 509-5121
-                </a>
+                <ChatTrigger mode="voice" className="btn-secondary text-lg px-8 py-4">
+                  Try Our AI Now
+                </ChatTrigger>
               </div>
               <p className="text-sm text-muted mt-6">
                 30-minute call. We&apos;ll identify your biggest leak and give you a plan to fix it&mdash;whether you work with us or not.

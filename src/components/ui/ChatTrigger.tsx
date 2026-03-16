@@ -26,20 +26,54 @@ function selectChatOption(targetText: string): boolean {
   const widget = document.querySelector('chat-widget');
   if (!widget || !widget.shadowRoot) return false;
 
-  const buttons = Array.from(
-    widget.shadowRoot.querySelectorAll('.chat-selection-button-text')
+  // Try finding ion-button elements that contain the target text
+  const ionButtons = Array.from(
+    widget.shadowRoot.querySelectorAll('ion-button.chat-selection-button')
   );
-  for (let i = 0; i < buttons.length; i++) {
-    if (buttons[i].textContent?.trim() === targetText) {
-      const clickTarget = (buttons[i].closest('ion-button') ||
-        buttons[i].closest('.chat-selection-button') ||
-        buttons[i].parentElement) as HTMLElement | null;
-      if (clickTarget) {
-        clickTarget.click();
-        return true;
-      }
+  for (let i = 0; i < ionButtons.length; i++) {
+    if (ionButtons[i].textContent?.includes(targetText)) {
+      (ionButtons[i] as HTMLElement).click();
+      return true;
     }
   }
+
+  // Fallback: find by button text spans
+  const textSpans = Array.from(
+    widget.shadowRoot.querySelectorAll('.chat-selection-button-text')
+  );
+  for (let i = 0; i < textSpans.length; i++) {
+    if (textSpans[i].textContent?.trim() === targetText) {
+      // Walk up to the ion-button or clickable parent within shadow DOM
+      let el = textSpans[i].parentElement;
+      while (el) {
+        if (el.tagName === 'ION-BUTTON' || el.tagName === 'BUTTON') {
+          (el as HTMLElement).click();
+          return true;
+        }
+        el = el.parentElement;
+      }
+      // Try clicking the text span container directly
+      const container = textSpans[i].closest('.chat-selection-button-inner');
+      if (container) {
+        (container as HTMLElement).click();
+        return true;
+      }
+      (textSpans[i] as HTMLElement).click();
+      return true;
+    }
+  }
+
+  // Last resort: look for any clickable element with the target text
+  const allElements = Array.from(
+    widget.shadowRoot.querySelectorAll('button, ion-button, [role="button"]')
+  );
+  for (let i = 0; i < allElements.length; i++) {
+    if (allElements[i].textContent?.includes(targetText)) {
+      (allElements[i] as HTMLElement).click();
+      return true;
+    }
+  }
+
   return false;
 }
 
@@ -52,13 +86,17 @@ function openWidgetWithMode(targetText: string) {
     lc.chatWidget.openWidget();
   }
 
-  // Select the chat option after widget renders
+  // Select the chat option with retries as widget UI renders
   const trySelect = () => selectChatOption(targetText);
 
   if (!trySelect()) {
     setTimeout(() => {
       if (!trySelect()) {
-        setTimeout(() => trySelect(), 500);
+        setTimeout(() => {
+          if (!trySelect()) {
+            setTimeout(() => trySelect(), 1000);
+          }
+        }, 500);
       }
     }, 300);
   }
