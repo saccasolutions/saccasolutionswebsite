@@ -22,55 +22,98 @@ function isMobileDevice(): boolean {
   );
 }
 
-function selectChatOption(targetText: string): boolean {
-  const widget = document.querySelector('chat-widget');
-  if (!widget || !widget.shadowRoot) return false;
+/**
+ * Recursively search through shadow DOMs to find elements matching a selector
+ */
+function deepQueryAll(root: Document | ShadowRoot | Element, selector: string): Element[] {
+  const results: Element[] = [];
 
-  // Try finding ion-button elements that contain the target text
-  const ionButtons = Array.from(
-    widget.shadowRoot.querySelectorAll('ion-button.chat-selection-button')
+  // Query direct matches in this root
+  const directMatches = Array.from(
+    (root as Document | ShadowRoot).querySelectorAll
+      ? (root as Document | ShadowRoot).querySelectorAll(selector)
+      : []
   );
-  for (let i = 0; i < ionButtons.length; i++) {
-    if (ionButtons[i].textContent?.includes(targetText)) {
-      (ionButtons[i] as HTMLElement).click();
-      return true;
-    }
-  }
+  results.push(...directMatches);
 
-  // Fallback: find by button text spans
-  const textSpans = Array.from(
-    widget.shadowRoot.querySelectorAll('.chat-selection-button-text')
-  );
-  for (let i = 0; i < textSpans.length; i++) {
-    if (textSpans[i].textContent?.trim() === targetText) {
-      // Walk up to the ion-button or clickable parent within shadow DOM
-      let el = textSpans[i].parentElement;
-      while (el) {
-        if (el.tagName === 'ION-BUTTON' || el.tagName === 'BUTTON') {
-          (el as HTMLElement).click();
-          return true;
-        }
-        el = el.parentElement;
-      }
-      // Try clicking the text span container directly
-      const container = textSpans[i].closest('.chat-selection-button-inner');
-      if (container) {
-        (container as HTMLElement).click();
-        return true;
-      }
-      (textSpans[i] as HTMLElement).click();
-      return true;
-    }
-  }
-
-  // Last resort: look for any clickable element with the target text
+  // Find all elements that might have shadow roots and recurse
   const allElements = Array.from(
-    widget.shadowRoot.querySelectorAll('button, ion-button, [role="button"]')
+    (root as Document | ShadowRoot).querySelectorAll
+      ? (root as Document | ShadowRoot).querySelectorAll('*')
+      : []
   );
   for (let i = 0; i < allElements.length; i++) {
-    if (allElements[i].textContent?.includes(targetText)) {
-      (allElements[i] as HTMLElement).click();
-      return true;
+    const el = allElements[i];
+    if (el.shadowRoot) {
+      results.push(...deepQueryAll(el.shadowRoot, selector));
+    }
+  }
+
+  return results;
+}
+
+function selectChatOption(targetText: string): boolean {
+  // Strategy 1: Deep search through all shadow DOMs for the selection buttons
+  const chatWidget = document.querySelector('chat-widget');
+  if (!chatWidget) return false;
+
+  const roots: (ShadowRoot | Element)[] = [];
+  if (chatWidget.shadowRoot) roots.push(chatWidget.shadowRoot);
+  roots.push(chatWidget);
+
+  for (let r = 0; r < roots.length; r++) {
+    const root = roots[r];
+
+    // Find ion-buttons with the target text
+    const ionButtons = deepQueryAll(root as Element, 'ion-button');
+    for (let i = 0; i < ionButtons.length; i++) {
+      if (ionButtons[i].textContent?.includes(targetText)) {
+        // Try multiple click methods
+        const el = ionButtons[i] as HTMLElement;
+
+        // Method 1: Direct click
+        el.click();
+
+        // Method 2: Composed MouseEvent (crosses shadow DOM boundaries)
+        el.dispatchEvent(new MouseEvent('click', {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          view: window,
+        }));
+
+        // Method 3: Find and click the native button inside ion-button shadow root
+        if (el.shadowRoot) {
+          const nativeBtn = el.shadowRoot.querySelector('button.button-native') as HTMLElement;
+          if (nativeBtn) {
+            nativeBtn.click();
+            nativeBtn.dispatchEvent(new MouseEvent('click', {
+              bubbles: true,
+              composed: true,
+              cancelable: true,
+              view: window,
+            }));
+          }
+        }
+
+        return true;
+      }
+    }
+
+    // Fallback: find .chat-selection-button-inner divs
+    const innerDivs = deepQueryAll(root as Element, '.chat-selection-button-inner');
+    for (let i = 0; i < innerDivs.length; i++) {
+      if (innerDivs[i].textContent?.includes(targetText)) {
+        const el = innerDivs[i] as HTMLElement;
+        el.click();
+        el.dispatchEvent(new MouseEvent('click', {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          view: window,
+        }));
+        return true;
+      }
     }
   }
 
@@ -89,17 +132,19 @@ function openWidgetWithMode(targetText: string) {
   // Select the chat option with retries as widget UI renders
   const trySelect = () => selectChatOption(targetText);
 
-  if (!trySelect()) {
-    setTimeout(() => {
-      if (!trySelect()) {
-        setTimeout(() => {
-          if (!trySelect()) {
-            setTimeout(() => trySelect(), 1000);
-          }
-        }, 500);
-      }
-    }, 300);
-  }
+  // Retry at increasing intervals - widget needs time to render selection screen
+  const intervals = [100, 300, 600, 1000, 1500, 2000];
+  let attempt = 0;
+
+  const retry = () => {
+    if (trySelect()) return;
+    if (attempt < intervals.length) {
+      setTimeout(retry, intervals[attempt]);
+      attempt++;
+    }
+  };
+
+  retry();
 }
 
 export default function ChatTrigger({
