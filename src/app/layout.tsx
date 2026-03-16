@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -35,6 +36,12 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="69b75bfb51635e35948ca703"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
