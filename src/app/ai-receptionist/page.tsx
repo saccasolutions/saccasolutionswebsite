@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChatTrigger from '@/components/ui/ChatTrigger';
 
 export default function AIReceptionistPage() {
   return (
@@ -250,9 +251,13 @@ export default function AIReceptionistPage() {
                 </svg>
                 (215) 509-5121
               </a>
-              <p className="text-sm text-muted mt-6">
-                Go ahead&mdash;call it. Ask about pricing, services, hours. See how it handles the conversation.
-              </p>
+              <p className="text-muted mt-6 mb-4">or try it right from your browser</p>
+              <ChatTrigger mode="voice" className="btn-primary inline-flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+                Chat with Voice in Browser
+              </ChatTrigger>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ChatTrigger from '@/components/ui/ChatTrigger';
 
 export default function AIMessagingPage() {
   return (
@@ -20,9 +21,9 @@ export default function AIMessagingPage() {
               Leads go cold in minutes, not hours. While you&apos;re busy running your business, potential customers are messaging you on every channel—and expecting an instant reply. Our AI handles it all, 24/7.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#try-it" className="btn-primary">
+              <ChatTrigger mode="text" className="btn-primary">
                 Try It Now — Chat With Our AI
-              </a>
+              </ChatTrigger>
               <Link href="/contact" className="btn-secondary">
                 Book a Demo
               </Link>
@@ -278,13 +279,13 @@ export default function AIMessagingPage() {
               <p className="text-lg text-muted mb-6">
                 That&apos;s our AI messaging agent. Go ahead, ask it anything—about our services, pricing, how it works. This is <span className="text-white font-medium">exactly</span> what your customers will experience.
               </p>
-              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+              <ChatTrigger mode="text" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors cursor-pointer">
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                 </span>
                 <span className="text-emerald-400 font-medium">AI Agent is live — try it now</span>
-              </div>
+              </ChatTrigger>
             </div>
           </div>
         </div>
@@ -368,9 +369,9 @@ export default function AIMessagingPage() {
                 <Link href="/contact" className="btn-primary text-lg px-8 py-4">
                   Book Your Free Demo
                 </Link>
-                <a href="#try-it" className="btn-secondary text-lg px-8 py-4">
+                <ChatTrigger mode="text" className="btn-secondary text-lg px-8 py-4">
                   Try the AI First
-                </a>
+                </ChatTrigger>
               </div>
               <p className="text-sm text-muted mt-6">
                 15-minute setup call. We&apos;ll show you exactly how it works for your business.
