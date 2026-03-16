@@ -163,7 +163,7 @@ export default function ChatTrigger({
       return;
     }
 
-    const targetText = mode === 'voice' ? 'Chat with Voice' : 'Chat with Text';
+    const targetText = mode === 'voice' ? 'Chat with Voice' : 'Chat via SMS/Email';
     openWidgetWithMode(targetText);
   };
 
